@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <!-- Bootstrap Core CSS -->
+     <!-- Bootstrap Core CSS -->
     @Styles.Render("~/Content/vendor/bootstrap/css/bootstrap.min.css")
 
     <!-- MetisMenu CSS -->
@@ -48,7 +48,7 @@
 
     @Scripts.Render("~/Content/vendor/datatables/js/jquery.dataTables.min.js")
 
-    @Scripts.Render("~/Content./vendor/datatables-plugins/dataTables.bootstrap.min.js")
+    @Scripts.Render("~/Content/vendor/datatables-plugins/dataTables.bootstrap.min.js")
     @Scripts.Render("~/Content/vendor/datatables-responsive/dataTables.responsive.js")
 
     <!-- Custom Theme JavaScript -->
@@ -74,6 +74,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Flights", "Index", "Flights")</li>
                     <li>@Html.ActionLink("Bookings", "Index", "Bookings")</li>
+                    <li>@Html.ActionLink("Users", "Index", "Users")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
