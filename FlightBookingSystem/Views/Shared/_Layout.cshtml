@@ -10,15 +10,22 @@
     @Scripts.Render("~/bundles/bootstrap")
     <!-- Bootstrap Core CSS -->
     @Styles.Render("~/Content/vendor/bootstrap/css/bootstrap.min.css")
+
     <!-- MetisMenu CSS -->
     @Styles.Render("~/Content/vendor/metisMenu/metisMenu.min.css")
+
+    <!-- DataTables CSS -->
+    @Styles.Render("~/Content/vendor/datatables-plugins/dataTables.bootstrap.css")
+
+    <!-- DataTables Responsive CSS -->
+    @Styles.Render("~/Content/vendor/datatables-responsive/dataTables.responsive.css")
+
     <!-- Custom CSS -->
     @Styles.Render("~/Content/dist/css/sb-admin-2.css")
-    <!-- Morris Charts CSS -->
-    @Styles.Render("~/Content/vendor/morrisjs/morris.css")
 
     <!-- Custom Fonts -->
-    @Styles.Render("~/Conten/vendor/font-awesome/css/font-awesome.min.css")
+    @Styles.Render("~/Content/vendor/font-awesome/css/font-awesome.min.css")
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,18 +33,27 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- jQuery -->
-    @Scripts.Render("~/Conten/vendor/jquery/jquery.min.js")
+
+    @Scripts.Render("~/Content/vendor/jquery/jquery.min.js")
+
     <!-- Bootstrap Core JavaScript -->
-    @Scripts.Render("~/Conten/vendor/bootstrap/js/bootstrap.min.js")
+
+    @Scripts.Render("~/Content/vendor/bootstrap/js/bootstrap.min.js")
+
     <!-- Metis Menu Plugin JavaScript -->
-    @Scripts.Render("~/Conten/vendor/metisMenu/metisMenu.min.js")
-    <!-- Morris Charts JavaScript -->
-    @Scripts.Render("~/Conten/vendor/raphael/raphael.min.js")
-    @Scripts.Render("~/Conten/vendor/morrisjs/morris.min.js")
-    @Scripts.Render("~/Conten//data/morris-data.js")
+
+    @Scripts.Render("~/Content/vendor/metisMenu/metisMenu.min.js")
+
+    <!-- DataTables JavaScript -->
+
+    @Scripts.Render("~/Content/vendor/datatables/js/jquery.dataTables.min.js")
+
+    @Scripts.Render("~/Content./vendor/datatables-plugins/dataTables.bootstrap.min.js")
+    @Scripts.Render("~/Content/vendor/datatables-responsive/dataTables.responsive.js")
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    @Scripts.Render("~/Content/dist/js/sb-admin-2.js")
+
     @RenderSection("scripts", required: false)
 
 
@@ -56,8 +72,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Flights", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Bookings", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Flights", "Index", "Flights")</li>
+                    <li>@Html.ActionLink("Bookings", "Index", "Bookings")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
