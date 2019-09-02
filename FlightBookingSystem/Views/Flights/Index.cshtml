@@ -5,16 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Users</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create","",new { @class = "btn btn-success"})
 </p>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                DataTables Advanced Tables
+                Users Data
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -40,7 +40,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.totalSeats)
                                 </th>
-                                <th></th>
+                                <th><span>actions</span></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,9 +66,9 @@
                                         @Html.DisplayFor(modelItem => item.totalSeats)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary"})
+                                        @Html.ActionLink("View", "Details", new { id = item.Id }, new { @class = "btn btn-warning"})
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger"})
                                     </td>
                                 </tr>
                             }
