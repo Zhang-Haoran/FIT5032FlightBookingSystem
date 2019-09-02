@@ -5,55 +5,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Bookings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Bookings Details</h4>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.status)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.status)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.rating)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.price)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.rating)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.price)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User.name)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.rating)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.name)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.rating)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Flight.departure)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.name)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Flight.departure)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.User.name)
+                </dd>
 
-    </dl>
-</div>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Flight.departure)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Flight.departure)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id },new {@class = "btn btn-warning" }) 
+    @Html.ActionLink("Back to List", "Index","",new {@class = "btn btn-success" })
 </p>

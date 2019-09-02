@@ -5,63 +5,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Flights</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.departure)
-        </dt>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Flights Details</h4>
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.departure)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.departure)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.departure)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.departureDate)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.departureDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.departureDate)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.departureDate)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.destination)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.destination)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.destination)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.destination)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.arrivalDate)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.arrivalDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.arrivalDate)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.arrivalDate)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.flightNumber)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.flightNumber)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.flightNumber)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.flightNumber)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.totalSeats)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.totalSeats)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.totalSeats)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.totalSeats)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id },new {@class= "btn btn-warning"})
+            @Html.ActionLink("Back to List", "Index","",new { @class = "btn btn-success" })
+        </p>
+    </div>
