@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Users" EntityType="Model.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bookings" EntityType="Model.Store.Bookings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Flights" EntityType="Model.Store.Flights" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsersBookings" Association="Model.Store.UsersBookings">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="BookingsFlights" Association="Model.Store.BookingsFlights">
+      <End Role="Bookings" EntitySet="Bookings" />
+      <End Role="Flights" EntitySet="Flights" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="role" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="rating" Type="int" Nullable="false" />
+    <Property Name="UsersId" Type="int" Nullable="false" />
+    <Property Name="FlightsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flights">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="departure" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="departureDate" Type="datetime" Nullable="false" />
+    <Property Name="destination" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="arrivalDate" Type="datetime" Nullable="false" />
+    <Property Name="flightNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="totalSeats" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UsersBookings">
+    <End Role="Users" Type="Model.Store.Users" Multiplicity="1" />
+    <End Role="Bookings" Type="Model.Store.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="UsersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingsFlights">
+    <End Role="Bookings" Type="Model.Store.Bookings" Multiplicity="*" />
+    <End Role="Flights" Type="Model.Store.Flights" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Flights">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="FlightsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Model.Users" />
+          <EntitySet Name="Bookings" EntityType="Model.Bookings" />
+          <EntitySet Name="Flights" EntityType="Model.Flights" />
+          <AssociationSet Name="UsersBookings" Association="Model.UsersBookings">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="BookingsFlights" Association="Model.BookingsFlights">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="Flights" EntitySet="Flights" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="role" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Model.UsersBookings" FromRole="Users" ToRole="Bookings" />
+        </EntityType>
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="rating" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Model.UsersBookings" FromRole="Bookings" ToRole="Users" />
+          <Property Name="UsersId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Flight" Relationship="Model.BookingsFlights" FromRole="Bookings" ToRole="Flights" />
+          <Property Name="FlightsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flights">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="departure" Type="String" Nullable="false" />
+          <Property Name="departureDate" Type="DateTime" Nullable="false" />
+          <Property Name="destination" Type="String" Nullable="false" />
+          <Property Name="arrivalDate" Type="DateTime" Nullable="false" />
+          <Property Name="flightNumber" Type="String" Nullable="false" />
+          <Property Name="totalSeats" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bookings" Relationship="Model.BookingsFlights" FromRole="Flights" ToRole="Bookings" />
+        </EntityType>
+        <Association Name="UsersBookings">
+          <End Type="Model.Users" Role="Users" Multiplicity="1" />
+          <End Type="Model.Bookings" Role="Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BookingsFlights">
+          <End Type="Model.Bookings" Role="Bookings" Multiplicity="*" />
+          <End Type="Model.Flights" Role="Flights" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Flights">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="FlightsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Bookings)">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+          <ScalarProperty Name="FlightsId" ColumnName="FlightsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flights">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Flights)">
+        <MappingFragment StoreEntitySet="Flights">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="departure" ColumnName="departure" />
+          <ScalarProperty Name="departureDate" ColumnName="departureDate" />
+          <ScalarProperty Name="destination" ColumnName="destination" />
+          <ScalarProperty Name="arrivalDate" ColumnName="arrivalDate" />
+          <ScalarProperty Name="flightNumber" ColumnName="flightNumber" />
+          <ScalarProperty Name="totalSeats" ColumnName="totalSeats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

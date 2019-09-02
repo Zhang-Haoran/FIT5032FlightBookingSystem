@@ -1,0 +1,67 @@
+﻿@model FlightBookingSystem.Models.Flights
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Flights</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.departure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departureDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departureDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.arrivalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.arrivalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flightNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flightNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalSeats)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalSeats)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

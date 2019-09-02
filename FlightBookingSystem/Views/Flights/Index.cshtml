@@ -1,0 +1,64 @@
+﻿@model IEnumerable<FlightBookingSystem.Models.Flights>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.departure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arrivalDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flightNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalSeats)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.departure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departureDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.arrivalDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.flightNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalSeats)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
