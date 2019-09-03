@@ -15,6 +15,27 @@
         <div class="panel-body">
             <dl class="dl-horizontal">
                 <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.seats)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.seats)
+                </dd>
+                <dt>
                     @Html.DisplayNameFor(model => model.status)
                 </dt>
 
@@ -38,13 +59,7 @@
                     @Html.DisplayFor(model => model.rating)
                 </dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.User.name)
-                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.User.name)
-                </dd>
 
                 <dt>
                     @Html.DisplayNameFor(model => model.Flight.departure)
