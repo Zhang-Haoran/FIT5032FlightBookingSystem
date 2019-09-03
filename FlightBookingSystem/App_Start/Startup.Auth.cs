@@ -63,6 +63,9 @@ namespace FlightBookingSystem
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            //add role
+            app.CreatePerOwinContext<ApplicationRoleManager>(Application‌​RoleManager.Create);
         }
     }
 }
