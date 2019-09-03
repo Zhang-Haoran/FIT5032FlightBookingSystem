@@ -229,6 +229,15 @@
     <Content Include="Content\dist\js\._sb-admin-2.min.js" />
     <Content Include="Content\dist\js\sb-admin-2.js" />
     <Content Include="Content\dist\js\sb-admin-2.min.js" />
+    <Content Include="Content\HomePageCss\css\jquery-ui.css" />
+    <Content Include="Content\HomePageCss\css\style.css" />
+    <Content Include="Content\HomePageCss\images\1.jpg" />
+    <Content Include="Content\HomePageCss\images\img-sp.png" />
+    <Content Include="Content\HomePageCss\images\into.png" />
+    <Content Include="Content\HomePageCss\images\tick.png" />
+    <Content Include="Content\HomePageCss\js\easyResponsiveTabs.js" />
+    <Content Include="Content\HomePageCss\js\jquery-ui.js" />
+    <Content Include="Content\HomePageCss\js\jquery.min.js" />
     <Content Include="Content\js\._sb-admin-2.js" />
     <Content Include="Content\js\sb-admin-2.js" />
     <Content Include="Content\vendor\bootstrap-social\._bootstrap-social.css" />
