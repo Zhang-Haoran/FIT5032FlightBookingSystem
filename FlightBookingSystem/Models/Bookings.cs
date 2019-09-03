@@ -16,8 +16,8 @@ namespace FlightBookingSystem.Models
     {
         public int Id { get; set; }
         public string status { get; set; }
-        public int price { get; set; }
-        public int rating { get; set; }
+        public Nullable<int> price { get; set; }
+        public Nullable<int> rating { get; set; }
         public int UsersId { get; set; }
         public int FlightsId { get; set; }
     

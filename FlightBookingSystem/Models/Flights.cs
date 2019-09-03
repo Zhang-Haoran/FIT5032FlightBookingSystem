@@ -22,11 +22,11 @@ namespace FlightBookingSystem.Models
     
         public int Id { get; set; }
         public string departure { get; set; }
-        public System.DateTime departureDate { get; set; }
+        public Nullable<System.DateTime> departureDate { get; set; }
         public string destination { get; set; }
-        public System.DateTime arrivalDate { get; set; }
+        public Nullable<System.DateTime> arrivalDate { get; set; }
         public string flightNumber { get; set; }
-        public int totalSeats { get; set; }
+        public Nullable<int> totalSeats { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bookings> Bookings { get; set; }
