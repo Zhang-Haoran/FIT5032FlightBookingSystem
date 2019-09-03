@@ -13,13 +13,13 @@ namespace FlightBookingSystem.Controllers
     public class FlightsController : Controller
     {
         private ModelContainer db = new ModelContainer();
-
+        [Authorize]
         // GET: Flights
         public ActionResult Index()
         {
             return View(db.Flights.ToList());
         }
-
+        [Authorize]
         // GET: Flights/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,13 +34,13 @@ namespace FlightBookingSystem.Controllers
             }
             return View(flights);
         }
-
+        [Authorize]
         // GET: Flights/Create
         public ActionResult Create()
         {
             return View();
         }
-
+        [Authorize]
         // POST: Flights/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -57,7 +57,7 @@ namespace FlightBookingSystem.Controllers
 
             return View(flights);
         }
-
+        [Authorize]
         // GET: Flights/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -72,7 +72,7 @@ namespace FlightBookingSystem.Controllers
             }
             return View(flights);
         }
-
+        [Authorize]
         // POST: Flights/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -88,7 +88,7 @@ namespace FlightBookingSystem.Controllers
             }
             return View(flights);
         }
-
+        [Authorize]
         // GET: Flights/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -103,7 +103,7 @@ namespace FlightBookingSystem.Controllers
             }
             return View(flights);
         }
-
+        [Authorize]
         // POST: Flights/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
