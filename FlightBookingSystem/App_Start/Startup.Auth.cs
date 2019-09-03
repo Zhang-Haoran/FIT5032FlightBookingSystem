@@ -58,11 +58,11 @@ namespace FlightBookingSystem
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "645977312238-mvero7opit29jurjn5n2cngp9gfdb6fe.apps.googleusercontent.com",
+                ClientSecret = "DmS9zOugjcrTlv-61LZl4lRN"
+            });
 
             //add role
             app.CreatePerOwinContext<ApplicationRoleManager>(Application‌​RoleManager.Create);

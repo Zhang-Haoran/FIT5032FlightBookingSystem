@@ -10,6 +10,7 @@ using FlightBookingSystem.Models;
 
 namespace FlightBookingSystem.Controllers
 {
+    [RequireHttps]
     public class BookingsController : Controller
     {
         private ModelContainer db = new ModelContainer();
