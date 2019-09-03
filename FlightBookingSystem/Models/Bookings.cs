@@ -11,15 +11,24 @@ namespace FlightBookingSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Bookings
     {
         public int Id { get; set; }
+        [Required]
+        [RegularExpression(@"^[A-Z a-z]+$", ErrorMessage = "Please enter a name,Numbers are not allowed")]
         public string name { get; set; }
         public string email { get; set; }
         public int seats { get; set; }
+        [Required]
+        [RegularExpression(@"^[A-Za-z]+$", ErrorMessage = "Please enter a status, Spaces and Numbers are not allowed")]
         public string status { get; set; }
+
+        [Column(TypeName = "numeric")]
         public int price { get; set; }
+        [Column(TypeName = "numeric")]
         public int rating { get; set; }
         public int FlightsId { get; set; }
     

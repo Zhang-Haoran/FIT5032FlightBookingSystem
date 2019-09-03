@@ -13,14 +13,14 @@ namespace FlightBookingSystem.Controllers
     public class BookingsController : Controller
     {
         private ModelContainer db = new ModelContainer();
-
+        [Authorize]
         // GET: Bookings
         public ActionResult Index()
         {
             var bookings = db.Bookings.Include(b => b.Flight);
             return View(bookings.ToList());
         }
-
+        [Authorize]
         // GET: Bookings/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,14 +35,14 @@ namespace FlightBookingSystem.Controllers
             }
             return View(bookings);
         }
-
+        [Authorize]
         // GET: Bookings/Create
         public ActionResult Create()
         {
             ViewBag.FlightsId = new SelectList(db.Flights, "Id", "flightNumber");
             return View();
         }
-
+        [Authorize]
         // POST: Bookings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -60,7 +60,7 @@ namespace FlightBookingSystem.Controllers
             ViewBag.FlightsId = new SelectList(db.Flights, "Id", "flightNumber", bookings.FlightsId);
             return View(bookings);
         }
-
+        [Authorize]
         // GET: Bookings/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -76,7 +76,7 @@ namespace FlightBookingSystem.Controllers
             ViewBag.FlightsId = new SelectList(db.Flights, "Id", "flightNumber", bookings.FlightsId);
             return View(bookings);
         }
-
+        [Authorize]
         // POST: Bookings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -93,7 +93,7 @@ namespace FlightBookingSystem.Controllers
             ViewBag.FlightsId = new SelectList(db.Flights, "Id", "flightNumber", bookings.FlightsId);
             return View(bookings);
         }
-
+        [Authorize]
         // GET: Bookings/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -108,7 +108,7 @@ namespace FlightBookingSystem.Controllers
             }
             return View(bookings);
         }
-
+        [Authorize]
         // POST: Bookings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
