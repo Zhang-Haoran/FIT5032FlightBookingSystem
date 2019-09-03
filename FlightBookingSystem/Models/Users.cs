@@ -11,7 +11,8 @@ namespace FlightBookingSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,12 @@ namespace FlightBookingSystem.Models
         }
     
         public int Id { get; set; }
+
         public string name { get; set; }
         public string email { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[A-Za-z]+$", ErrorMessage = "Please enter a valid role, Spaces and Numbers are not allowed")]
         public string role { get; set; }
         public string password { get; set; }
     

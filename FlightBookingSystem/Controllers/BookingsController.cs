@@ -30,6 +30,7 @@ namespace FlightBookingSystem.Controllers
             }
             Bookings bookings = db.Bookings.Find(id);
             if (bookings == null)
+
             {
                 return HttpNotFound();
             }

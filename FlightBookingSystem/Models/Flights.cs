@@ -11,7 +11,9 @@ namespace FlightBookingSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Flights
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +23,23 @@ namespace FlightBookingSystem.Models
         }
     
         public int Id { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[A-Za-z]+$", ErrorMessage = "Please enter a valid departure, Spaces and Numbers are not allowed")]
         public string departure { get; set; }
+
+        [Column(TypeName = "date")]
         public Nullable<System.DateTime> departureDate { get; set; }
+
+        [Required]
+        [RegularExpression(@"^[A-Za-z]+$", ErrorMessage = "Please enter a valid destination, Spaces and Numbers are not allowed")]
         public string destination { get; set; }
+
+        [Column(TypeName = "date")]
         public Nullable<System.DateTime> arrivalDate { get; set; }
         public string flightNumber { get; set; }
+
+        [Column(TypeName = "numeric")]
         public Nullable<int> totalSeats { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
