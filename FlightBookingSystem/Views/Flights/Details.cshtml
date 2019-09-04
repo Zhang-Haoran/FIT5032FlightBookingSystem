@@ -88,6 +88,7 @@
 
 </div>
 <script>
+    var path = [];
     function myFunction() {
         geocoder = new google.maps.Geocoder();
         var latlng = new google.maps.LatLng("-34.397", "150.644");
@@ -100,37 +101,56 @@
     }
 
     function codeAddress() {
-        var from_latlng, to_latlng;
+
+        var from_latlng = 0;
+        var to_latlng = 0;
         var address1 = document.getElementById("travelFrom").textContent;
 
         var address2 = document.getElementById("travelTo").textContent;
+        
 
 
-
-        geocoder.geocode({ "address": address1 }, function (results, status) {
+ geocoder.geocode({ "address": address1 }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
 
                 from_latlng = results[0].geometry.location;
-     
+                map.setCenter(from_latlng);
+                var marker1 = new google.maps.Marker({
+                    map: map,
+                    position: from_latlng
+                });
+                path.push(from_latlng);
             }
             else {
                 alert("geocode was not successful because" + status);
             }
+            
         });
-        geocoder.geocode({ "address": address2 }, function (results, status) {
+    geocoder.geocode({ "address": address2 }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
-                to_latlng = results[0].geometry.location;
+              to_latlng = results[0].geometry.location;
+                map.setCenter(to_latlng);
+                var marker2 = new google.maps.Marker({
+                    map: map,
+                    position: to_latlng
+                });
+                path.push(to_latlng);
+                console.log(path)
             }
             else {
                 alert("geocode was not successful because" + status);
             }
+            
         });
 
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 3,
+            center: { lat: 0, lng: -180 },
+            mapTypeId: 'terrain'
+        });
 
-        var flightPlanCoordinates = [
-               new google.maps.LatLng(from_latlng),
-               new google.maps.LatLng(to_latlng)
-        ];
+        var flightPlanCoordinates = path;
+        console.log(path)
         var flightPath = new google.maps.Polyline({
             path: flightPlanCoordinates,
             geodesic: true,
