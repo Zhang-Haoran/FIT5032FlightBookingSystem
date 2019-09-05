@@ -35,13 +35,13 @@ namespace FlightBookingSystem.Controllers
             }
             return View(flights);
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         // GET: Flights/Create
         public ActionResult Create()
         {
             return View();
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         // POST: Flights/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -58,7 +58,7 @@ namespace FlightBookingSystem.Controllers
 
             return View(flights);
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         // GET: Flights/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -73,7 +73,7 @@ namespace FlightBookingSystem.Controllers
             }
             return View(flights);
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         // POST: Flights/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -89,7 +89,7 @@ namespace FlightBookingSystem.Controllers
             }
             return View(flights);
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         // GET: Flights/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -104,7 +104,7 @@ namespace FlightBookingSystem.Controllers
             }
             return View(flights);
         }
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         // POST: Flights/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
