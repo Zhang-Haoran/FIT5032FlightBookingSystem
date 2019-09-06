@@ -124,5 +124,10 @@ namespace FlightBookingSystem.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Dashboard()
+        {
+            return View(db.Flights.ToList());
+        }
     }
 }
