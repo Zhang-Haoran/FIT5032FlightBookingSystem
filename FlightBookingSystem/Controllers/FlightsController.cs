@@ -33,8 +33,36 @@ namespace FlightBookingSystem.Controllers
             {
                 return HttpNotFound();
             }
+            //add comment(assuming from other table)
+            var comments = db.Comments.Where(m => m.FlightsId == id).Select(x => x.content).ToList();
+
+            ViewBag.Content = comments;
+    
+            ViewBag.FlightId = flights.Id;
             return View(flights);
         }
+
+        public ActionResult AddComments(int FlightID,string Comments)
+        {
+            Comments comments = new Comments();
+            comments.FlightsId = FlightID;
+            comments.content = Comments;
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            db.Comments.Add(comments);
+            db.SaveChanges();
+            Flights flights = db.Flights.Find(FlightID);
+            return RedirectToAction("Details", new { id = FlightID });
+        }
+
+
+
+
+
+
+
         [Authorize(Roles = "Admin")]
         // GET: Flights/Create
         public ActionResult Create()

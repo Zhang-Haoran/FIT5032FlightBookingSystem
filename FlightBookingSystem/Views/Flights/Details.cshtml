@@ -77,6 +77,31 @@
         </dl>
 
         <div id="map"></div>
+    
+            
+            <div class="flightsComments">
+            
+                @foreach(var content in ViewBag.Content)
+                {
+                    <text> </text>
+                    @Html.Raw(content);
+                }
+                
+
+            </div>
+            @using (Ajax.BeginForm("AddComments", "Flights", null, new AjaxOptions
+            {
+                HttpMethod = "Post",
+            }))
+            {
+                <input type="hidden" id="FlightId" , name="FlightId" value="@Html.Raw(ViewBag.FlightId)" />
+                <input type="text" id="Comments" name="Comments" />
+                <input type="submit" value="submit" />
+            }
+
+
+
+
     </div>
             <p>
                 @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
