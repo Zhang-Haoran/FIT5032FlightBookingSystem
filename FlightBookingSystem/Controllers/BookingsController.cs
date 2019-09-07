@@ -34,8 +34,39 @@ namespace FlightBookingSystem.Controllers
             {
                 return HttpNotFound();
             }
+            ////add comment(assuming from other table)
+            //var rating = db.Bookings.Where(m => m.Id == id).Select(x => x.rating);
+            //foreach(var eachRating in rating)
+            //{
+            //    ViewBag.Rating = eachRating;
+            //}
+            //ViewBag.BookingId = bookings.Id;
+
             return View(bookings);
         }
+
+        //public ActionResult AddComments(int BookingId, int Ratings)
+        //{
+        //    Bookings bookings = new Bookings();
+        //    bookings.Id = BookingId;
+        //    bookings.rating = Ratings;
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View();
+        //    }
+            
+        //    //db.Flights.Add(flights);
+        //    db.SaveChanges();
+        //    Bookings bookings2 = db.Bookings.Find(BookingId);
+        //    return RedirectToAction("Edit", new { id = BookingId});
+        //}
+
+
+
+
+
+
+
         [Authorize]
         // GET: Bookings/Create
         public ActionResult Create()
