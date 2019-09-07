@@ -8,9 +8,19 @@
   <EntityContainer Name="ModelStoreContainer">
     <EntitySet Name="Flights" EntityType="Model.Store.Flights" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Bookings" EntityType="Model.Store.Bookings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="Model.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Files" EntityType="Model.Store.Files" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="BookingsFlights" Association="Model.Store.BookingsFlights">
       <End Role="Bookings" EntitySet="Bookings" />
       <End Role="Flights" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="CommentsFlights" Association="Model.Store.CommentsFlights">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="Flights" EntitySet="Flights" />
+    </AssociationSet>
+    <AssociationSet Name="ImagesBookings" Association="Model.Store.ImagesBookings">
+      <End Role="Images" EntitySet="Files" />
+      <End Role="Bookings" EntitySet="Bookings" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Flights">
@@ -30,13 +40,31 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="seats" Type="int" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="price" Type="int" Nullable="false" />
-    <Property Name="rating" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="seats" Type="int" Nullable="true" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="price" Type="int" Nullable="true" />
+    <Property Name="rating" Type="int" Nullable="true" />
     <Property Name="FlightsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="content" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="rating" Type="int" Nullable="true" />
+    <Property Name="FlightsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="path" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BookingsId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="BookingsFlights">
     <End Role="Bookings" Type="Model.Store.Bookings" Multiplicity="*" />
@@ -47,6 +75,30 @@
       </Principal>
       <Dependent Role="Bookings">
         <PropertyRef Name="FlightsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentsFlights">
+    <End Role="Comments" Type="Model.Store.Comments" Multiplicity="*" />
+    <End Role="Flights" Type="Model.Store.Flights" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Flights">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="FlightsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ImagesBookings">
+    <End Role="Images" Type="Model.Store.Files" Multiplicity="*" />
+    <End Role="Bookings" Type="Model.Store.Bookings" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Bookings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Images">
+        <PropertyRef Name="BookingsId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -61,6 +113,16 @@
             <End Role="Bookings" EntitySet="Bookings" />
             <End Role="Flights" EntitySet="Flights" />
           </AssociationSet>
+          <EntitySet Name="Comments" EntityType="Model.Comments" />
+          <AssociationSet Name="CommentsFlights" Association="Model.CommentsFlights">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Flights" EntitySet="Flights" />
+          </AssociationSet>
+          <EntitySet Name="Files" EntityType="Model.Files" />
+          <AssociationSet Name="ImagesBookings" Association="Model.ImagesBookings">
+            <End Role="Images" EntitySet="Files" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Flights">
           <Key>
@@ -68,26 +130,28 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="departure" Type="String" Unicode="true" FixedLength="false" MaxLength="Max" />
-          <Property Name="departureDate" Type="DateTime" Precision="0" />
+          <Property Name="departureDate" Type="DateTime" Precision="3" />
           <Property Name="destination" Type="String" Unicode="true" FixedLength="false" MaxLength="Max" />
-          <Property Name="arrivalDate" Type="DateTime" Precision="0" />
+          <Property Name="arrivalDate" Type="DateTime" Precision="3" />
           <Property Name="flightNumber" Type="String" Unicode="true" FixedLength="false" MaxLength="Max" />
           <Property Name="totalSeats" Type="Int32" />
           <NavigationProperty Name="Bookings" Relationship="Model.BookingsFlights" FromRole="Flights" ToRole="Bookings" />
+          <NavigationProperty Name="Comments" Relationship="Model.CommentsFlights" FromRole="Flights" ToRole="Comments" />
         </EntityType>
         <EntityType Name="Bookings">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" />
-          <Property Name="email" Type="String" Nullable="false" />
-          <Property Name="seats" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="String" Nullable="false" />
-          <Property Name="price" Type="Int32" Nullable="false" />
-          <Property Name="rating" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="seats" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="rating" Type="Int32" />
           <NavigationProperty Name="Flight" Relationship="Model.BookingsFlights" FromRole="Bookings" ToRole="Flights" />
           <Property Name="FlightsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Images" Relationship="Model.ImagesBookings" FromRole="Bookings" ToRole="Images" />
         </EntityType>
         <Association Name="BookingsFlights">
           <End Type="Model.Bookings" Role="Bookings" Multiplicity="*" />
@@ -98,6 +162,50 @@
             </Principal>
             <Dependent Role="Bookings">
               <PropertyRef Name="FlightsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="rating" Type="Int32" />
+          <NavigationProperty Name="Flight" Relationship="Model.CommentsFlights" FromRole="Comments" ToRole="Flights" />
+          <Property Name="FlightsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="CommentsFlights">
+          <End Type="Model.Comments" Role="Comments" Multiplicity="*" />
+          <End Type="Model.Flights" Role="Flights" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Flights">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="FlightsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Files">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="path" Type="String" />
+          <Property Name="name" Type="String" />
+          <NavigationProperty Name="Booking" Relationship="Model.ImagesBookings" FromRole="Images" ToRole="Bookings" />
+          <Property Name="BookingsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ImagesBookings">
+          <End Type="Model.Files" Role="Images" Multiplicity="*" />
+          <End Type="Model.Bookings" Role="Bookings" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="BookingsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -131,6 +239,26 @@
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="rating" ColumnName="rating" />
           <ScalarProperty Name="FlightsId" ColumnName="FlightsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Comments)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="FlightsId" ColumnName="FlightsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Files)">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="path" ColumnName="path" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="BookingsId" ColumnName="BookingsId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

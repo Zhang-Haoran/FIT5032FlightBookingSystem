@@ -5,9 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="dee906800554461f8a8b49981d680178" Name="Diagram1" >
-        <EntityTypeShape EntityType="Model.Flights" Width="1.5" PointX="6.75" PointY="0.5" />
-        <EntityTypeShape EntityType="Model.Bookings" Width="1.5" PointX="3" PointY="0.5" />
+        <EntityTypeShape EntityType="Model.Flights" Width="1.5" PointX="4.375" PointY="0.5" />
+        <EntityTypeShape EntityType="Model.Bookings" Width="1.5" PointX="1.75" PointY="0.5" />
         <AssociationConnector Association="Model.BookingsFlights" />
+        <EntityTypeShape EntityType="Model.Comments" Width="1.5" PointX="6.5" PointY="1" />
+        <AssociationConnector Association="Model.CommentsFlights" />
+        <EntityTypeShape EntityType="Model.Files" Width="1.5" PointX="1.75" PointY="4.375" />
+        <AssociationConnector Association="Model.ImagesBookings" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,25 +12,13 @@ namespace FlightBookingSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bookings
+    public partial class Comments
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bookings()
-        {
-            this.Images = new HashSet<Files>();
-        }
-    
         public int Id { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public Nullable<int> seats { get; set; }
-        public string status { get; set; }
-        public Nullable<int> price { get; set; }
+        public string content { get; set; }
         public Nullable<int> rating { get; set; }
         public int FlightsId { get; set; }
     
         public virtual Flights Flight { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Files> Images { get; set; }
     }
 }
