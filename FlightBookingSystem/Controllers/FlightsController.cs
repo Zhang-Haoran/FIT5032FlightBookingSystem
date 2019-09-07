@@ -53,7 +53,6 @@ namespace FlightBookingSystem.Controllers
             }
             db.Comments.Add(comments);
             db.SaveChanges();
-            Flights flights = db.Flights.Find(FlightID);
             return RedirectToAction("Details", new { id = FlightID });
         }
 
