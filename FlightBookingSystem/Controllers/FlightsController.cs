@@ -154,6 +154,9 @@ namespace FlightBookingSystem.Controllers
 
         public ActionResult Dashboard()
         {
+            ViewBag.flightNumber = db.Flights.Select(m =>m.flightNumber);
+            ViewBag.totalSeats = db.Flights.Select(m => m.totalSeats);
+
             return View(db.Flights.ToList());
         }
     }

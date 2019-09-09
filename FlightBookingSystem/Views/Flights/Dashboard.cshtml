@@ -4,7 +4,12 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <h2>Dashboard</h2>
 
 <p>
@@ -59,10 +64,10 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.arrivalDate)
                                     </td>
-                                    <td>
+                                    <td id="a">
                                         @Html.DisplayFor(modelItem => item.flightNumber)
                                     </td>
-                                    <td>
+                                    <td id="b">
                                         @Html.DisplayFor(modelItem => item.totalSeats)
                                     </td>
                                     <td>
@@ -77,6 +82,7 @@
                     </table>
                     <!-- /.table-responsive -->
 
+                    <div id="chart" style="height: 250px;"></div>
                 </div>
                 <!-- /.panel-body -->
             </div>
@@ -85,8 +91,12 @@
         <!-- /.col-lg-12 -->
     </div>
 </div>
+
+
+
+
 <script>
-$(document).ready(function() {
+    $(document).ready(function () {
         $('#dataTables-example').DataTable({
             responsive: true
         });
@@ -95,4 +105,16 @@ $(document).ready(function() {
     $(document).ready(function () {
         $.notify("Welcome Aboard", "success");
     })
+</script>
+<script>
+    Morris.Bar({
+        element: 'chart',
+        data: [
+            { y: document.getElementById("a").textContent, a: document.getElementById("b").textContent},
+        
+        ],
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['Series A']
+    });
 </script>
