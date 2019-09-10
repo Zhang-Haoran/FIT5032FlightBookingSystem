@@ -125,6 +125,11 @@
 
             var from_latlng = 0;
             var to_latlng = 0;
+            var lat = 0;
+            var lng = 0;
+ 
+            var flightPlanCoordinates = [];
+       
             var address1 = document.getElementById("travelFrom").textContent;
 
             var address2 = document.getElementById("travelTo").textContent;
@@ -135,6 +140,9 @@
                 if (status == google.maps.GeocoderStatus.OK) {
 
                     from_latlng = results[0].geometry.location;
+                    lat = results[0].geometry.location.lat();
+                    lng = results[0].geometry.location.lng();
+                    flightPlanCoordinates[0] = { lat:lat, lng:lng };
                     map.setCenter(from_latlng);
                     var marker1 = new google.maps.Marker({
                         map: map,
@@ -151,6 +159,9 @@
             geocoder.geocode({ "address": address2 }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     to_latlng = results[0].geometry.location;
+                    lat = results[0].geometry.location.lat();
+                    lng = results[0].geometry.location.lng();
+                     flightPlanCoordinates[1] = { lat:lat, lng:lng };
                     map.setCenter(to_latlng);
                     var marker2 = new google.maps.Marker({
                         map: map,
@@ -169,6 +180,20 @@
                 center: { lat: 0, lng: -180 },
                 mapTypeId: 'terrain'
             });
+
+            console.log(flightPlanCoordinates)
+
+        var flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        console.log(flightPath)
+        flightPath.setMap(map);
+
+
 
 
         }
