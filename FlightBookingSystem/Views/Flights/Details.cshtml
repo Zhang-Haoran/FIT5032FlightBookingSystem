@@ -77,27 +77,27 @@
         </dl>
 
         <div id="map"></div>
-    
-            
-            <div class="flightsComments">
-            
-                @foreach(var content in ViewBag.Content)
-                {
-                    <text> </text>
-                    @Html.Raw(content);
-                }
-                
 
-            </div>
-            @using (Ajax.BeginForm("AddComments", "Flights", null, new AjaxOptions
+
+        <div class="flightsComments">
+
+            @foreach (var content in ViewBag.Content)
             {
-                HttpMethod = "Post",
-            }))
-            {
-                <input type="hidden" id="FlightId" , name="FlightId" value="@Html.Raw(ViewBag.FlightId)" />
-                <input type="text" id="Comments" name="Comments" />
-                <input type="submit" value="submit" />
+                <text> </text>
+                @Html.Raw(content);
             }
+
+
+        </div>
+        @using (Ajax.BeginForm("AddComments", "Flights", null, new AjaxOptions
+        {
+            HttpMethod = "Post",
+        }))
+        {
+            <input type="hidden" id="FlightId" , name="FlightId" value="@Html.Raw(ViewBag.FlightId)" />
+            <input type="text" id="Comments" name="Comments" />
+            <input type="submit" value="submit" />
+        }
 
 
 
@@ -129,7 +129,7 @@
             var from_lng = 0;
             var to_lat = 0;
             var to_lng = 0;
- 
+          
   
        
             var address1 = document.getElementById("travelFrom").textContent;
@@ -151,12 +151,24 @@
                         position: from_latlng,
                        
                     });
+                     map.addListener('center_changed', function () {
+                        // 3 seconds after the center of the map has changed, pan back to the
+                        // marker.
+                        window.setTimeout(function () {
+                            map.panTo(marker.getPosition());
+                        }, 3000);
+                    });
+
+                    marker1.addListener('click', function () {
+                        map.setZoom(14);
+                        map.setCenter(marker1.getPosition());
+                    });
         
                 }
                 else {
                     alert("geocode was not successful because" + status);
                 }
-
+              
             });
             geocoder.geocode({ "address": address2 }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
@@ -169,13 +181,26 @@
                         map: map,
                         position: to_latlng
                     });
-              
+                    map.addListener('center_changed', function () {
+                        // 3 seconds after the center of the map has changed, pan back to the
+                        // marker.
+                        window.setTimeout(function () {
+                            map.panTo(marker.getPosition());
+                        }, 3000);
+                    });
+
+                    marker2.addListener('click', function () {
+                        map.setZoom(14);
+                        map.setCenter(marker2.getPosition());
+                    });
+                    
                 }
                 else {
                     alert("geocode was not successful because" + status);
                 }
-
+              
             });
+            
 
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 4,
@@ -186,6 +211,8 @@
 
 
         }
+
+      
 
     </script>
 
