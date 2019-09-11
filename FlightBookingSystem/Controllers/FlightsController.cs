@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using FlightBookingSystem.Models;
@@ -13,6 +14,7 @@ namespace FlightBookingSystem.Controllers
     [RequireHttps]
     public class FlightsController : Controller
     {
+
         private ModelContainer db = new ModelContainer();
         [AllowAnonymous]
         // GET: Flights
@@ -41,12 +43,20 @@ namespace FlightBookingSystem.Controllers
             ViewBag.FlightId = flights.Id;
             return View(flights);
         }
-
+        [ValidateInput(false)]
         public ActionResult AddComments(int FlightID,string Comments)
         {
+            StringBuilder sbComments = new StringBuilder();
             Comments comments = new Comments();
             comments.FlightsId = FlightID;
             comments.content = Comments;
+            sbComments.Append(HttpUtility.HtmlEncode(comments.content));
+            // Only decode bold and underline tags
+            sbComments.Replace("&lt;b&gt;", "[b]");
+            sbComments.Replace("&lt;/b&gt;", "[/b]");
+            sbComments.Replace("&lt;u&gt;", "[u]");
+            sbComments.Replace("&lt;/u&gt;", "[/u]");
+            comments.content = sbComments.ToString();
             if (!ModelState.IsValid)
             {
                 return View();

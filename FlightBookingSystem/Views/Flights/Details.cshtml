@@ -78,144 +78,156 @@
 
         <div id="map"></div>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="page-header">
+                        <h1> Comments </h1>
+                    </div>
+                    <div class="comments-list">
+                        <div class="flightsComments">
 
-        <div class="flightsComments">
+                            @foreach (var content in ViewBag.Content)
+                            {
+                                <text><br/></text>
+                                @Html.Raw(content);
+                            }
 
-            @foreach (var content in ViewBag.Content)
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            @using (Ajax.BeginForm("AddComments", "Flights", null, new AjaxOptions
             {
-                <text> </text>
-                @Html.Raw(content);
+                HttpMethod = "Post",
+            }))
+            {
+                <input type="hidden" id="FlightId" , name="FlightId" value="@Html.Raw(ViewBag.FlightId)" />
+           
+                <textarea rows="3" placeholder="Your Comment" id="Comments" name="Comments" class="form-control"></textarea>
+                <input type="submit" value="submit" />
             }
-
 
         </div>
-        @using (Ajax.BeginForm("AddComments", "Flights", null, new AjaxOptions
-        {
-            HttpMethod = "Post",
-        }))
-        {
-            <input type="hidden" id="FlightId" , name="FlightId" value="@Html.Raw(ViewBag.FlightId)" />
-            <input type="text" id="Comments" name="Comments" />
-            <input type="submit" value="submit" />
-        }
+
+
+                    </div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-success" })
+                    </p>
+
+                </div>
+                <script>
+                    function myFunction() {
+                        geocoder = new google.maps.Geocoder();
+                        var latlng = new google.maps.LatLng("-34.397", "150.644");
+                        var mapOption = {
+                            zoom: 15,
+                            center: latlng
+                        }
+                        map = new google.maps.Map(document.getElementById("map"), mapOption);
+                        codeAddress();
+                    }
+
+                    function codeAddress() {
+
+                        var from_latlng = 0;
+                        var to_latlng = 0;
+                        var from_lat = 0;
+                        var from_lng = 0;
+                        var to_lat = 0;
+                        var to_lng = 0;
 
 
 
+                        var address1 = document.getElementById("travelFrom").textContent;
 
-    </div>
-            <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
-                @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-success" })
-            </p>
-
-    </div>
-    <script>
-        function myFunction() {
-            geocoder = new google.maps.Geocoder();
-            var latlng = new google.maps.LatLng("-34.397", "150.644");
-            var mapOption = {
-                zoom: 15,
-                center: latlng
-            }
-            map = new google.maps.Map(document.getElementById("map"), mapOption);
-            codeAddress();
-        }
-
-        function codeAddress() {
-
-            var from_latlng = 0;
-            var to_latlng = 0;
-            var from_lat = 0;
-            var from_lng = 0;
-            var to_lat = 0;
-            var to_lng = 0;
-          
-  
-       
-            var address1 = document.getElementById("travelFrom").textContent;
-
-            var address2 = document.getElementById("travelTo").textContent;
+                        var address2 = document.getElementById("travelTo").textContent;
 
 
 
-            geocoder.geocode({ "address": address1 }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
+                        geocoder.geocode({ "address": address1 }, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
 
-                    from_latlng = results[0].geometry.location;
-                    from_lat = results[0].geometry.location.lat();
-                    from_lng = results[0].geometry.location.lng();
-     
-                    map.setCenter(from_latlng);
-                    var marker1 = new google.maps.Marker({
-                        map: map,
-                        position: from_latlng,
-                       
-                    });
-                     map.addListener('center_changed', function () {
-                        // 3 seconds after the center of the map has changed, pan back to the
-                        // marker.
-                        window.setTimeout(function () {
-                            map.panTo(marker.getPosition());
-                        }, 3000);
-                    });
+                                from_latlng = results[0].geometry.location;
+                                from_lat = results[0].geometry.location.lat();
+                                from_lng = results[0].geometry.location.lng();
 
-                    marker1.addListener('click', function () {
-                        map.setZoom(14);
-                        map.setCenter(marker1.getPosition());
-                    });
-        
-                }
-                else {
-                    alert("geocode was not successful because" + status);
-                }
-              
-            });
-            geocoder.geocode({ "address": address2 }, function (results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    to_latlng = results[0].geometry.location;
-                    to_lat = results[0].geometry.location.lat();
-                    to_lng = results[0].geometry.location.lng();
-           
-                    map.setCenter(to_latlng);
-                    var marker2 = new google.maps.Marker({
-                        map: map,
-                        position: to_latlng
-                    });
-                    map.addListener('center_changed', function () {
-                        // 3 seconds after the center of the map has changed, pan back to the
-                        // marker.
-                        window.setTimeout(function () {
-                            map.panTo(marker.getPosition());
-                        }, 3000);
-                    });
+                                map.setCenter(from_latlng);
+                                var marker1 = new google.maps.Marker({
+                                    map: map,
+                                    position: from_latlng,
 
-                    marker2.addListener('click', function () {
-                        map.setZoom(14);
-                        map.setCenter(marker2.getPosition());
-                    });
-                    
-                }
-                else {
-                    alert("geocode was not successful because" + status);
-                }
-              
-            });
-            
+                                });
+                                map.addListener('center_changed', function () {
+                                    // 3 seconds after the center of the map has changed, pan back to the
+                                    // marker.
+                                    window.setTimeout(function () {
+                                        map.panTo(marker.getPosition());
+                                    }, 3000);
+                                });
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: { lat: 0, lng: -180 },
-                mapTypeId: 'terrain'
-            });
+                                marker1.addListener('click', function () {
+                                    map.setZoom(14);
+                                    map.setCenter(marker1.getPosition());
+                                });
+
+                            }
+                            else {
+                                alert("geocode was not successful because" + status);
+                            }
+
+                        });
+                        geocoder.geocode({ "address": address2 }, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                to_latlng = results[0].geometry.location;
+                                to_lat = results[0].geometry.location.lat();
+                                to_lng = results[0].geometry.location.lng();
+
+                                map.setCenter(to_latlng);
+                                var marker2 = new google.maps.Marker({
+                                    map: map,
+                                    position: to_latlng
+                                });
+                                map.addListener('center_changed', function () {
+                                    // 3 seconds after the center of the map has changed, pan back to the
+                                    // marker.
+                                    window.setTimeout(function () {
+                                        map.panTo(marker.getPosition());
+                                    }, 3000);
+                                });
+
+                                marker2.addListener('click', function () {
+                                    map.setZoom(14);
+                                    map.setCenter(marker2.getPosition());
+                                });
+
+                            }
+                            else {
+                                alert("geocode was not successful because" + status);
+                            }
+
+                        });
 
 
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 4,
+                            center: { lat: 0, lng: -180 },
+                            mapTypeId: 'terrain'
+                        });
 
-        }
-
-      
-
-    </script>
 
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWDodbWDP0gwQTVe0_1R3WSAn8fsq7lQQ&callback=myFunction"
-            type="text/javascript"></script>
+                    }
+
+
+
+                </script>
+
+
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWDodbWDP0gwQTVe0_1R3WSAn8fsq7lQQ&callback=myFunction"
+                        type="text/javascript"></script>
