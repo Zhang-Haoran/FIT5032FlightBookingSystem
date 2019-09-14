@@ -20,6 +20,5 @@ namespace FlightBookingSystem.Models
         public int FlightsId { get; set; }
     
         public virtual Flights Flight { get; set; }
-
     }
 }
