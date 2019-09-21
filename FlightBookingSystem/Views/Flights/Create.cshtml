@@ -4,16 +4,20 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+<script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
+
+<link rel="stylesheet" href="~/Content/bootstrap-datetimepicker.css" />
+
 <script>
     $(function () {
-        $("#datepicker").datepicker();
+        $("#datepicker").datetimepicker();
     });
     $(function () {
-        $("#datepicker1").datepicker();
+        $("#datepicker1").datetimepicker();
     });
 </script>
 @using (Html.BeginForm())
@@ -39,7 +43,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.departureDate, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.departureDate, new { htmlAttributes = new { @class = "form-control" ,id="datepicker"} })
+                        @Html.EditorFor(model => model.departureDate, new { htmlAttributes = new { @class = "form-control", id = "datepicker" } })
                         @Html.ValidationMessageFor(model => model.departureDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -55,7 +59,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.arrivalDate, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.arrivalDate, new { htmlAttributes = new { @class = "form-control" ,id="datepicker1" } })
+                        @Html.EditorFor(model => model.arrivalDate, new { htmlAttributes = new { @class = "form-control", id = "datepicker1" } })
                         @Html.ValidationMessageFor(model => model.arrivalDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
