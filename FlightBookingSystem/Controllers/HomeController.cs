@@ -14,6 +14,18 @@ namespace FlightBookingSystem.Controllers
         {
             return View();
         }
+        public ActionResult About()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
+        public ActionResult Offers()
+        {
+            return View();
+        }
 
     }
 }
