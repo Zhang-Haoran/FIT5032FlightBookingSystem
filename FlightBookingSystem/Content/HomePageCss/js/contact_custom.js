@@ -206,7 +206,7 @@ $(document).ready(function()
 		// var image = 'images/map_marker.png';
 		var image = 
 		{
-            url:'images/marker.png',
+            url:'/Content/HomePageCss/images/marker.png',
 			size: new google.maps.Size(230, 150),
 			anchor: new google.maps.Point(206, 125) //setting the anchor for larger icons
 		};

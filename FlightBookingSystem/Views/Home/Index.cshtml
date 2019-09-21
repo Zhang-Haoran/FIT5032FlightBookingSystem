@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Destino</title>
+    <title>Flybook</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Destino project">
@@ -36,8 +36,8 @@
                             <!-- Logo -->
                             <div class="logo_container">
                                 <div class="logo">
-                                    <div>destino</div>
-                                    <div>travel agency</div>
+                                    
+                                    <div>FlyBook</div>
                                     <div class="logo_image"><img src="~/Content/HomePageCss/images/logo.png" alt=""></div>
                                 </div>
                             </div>
@@ -45,11 +45,13 @@
                             <!-- Main Navigation -->
                             <nav class="main_nav ml-auto">
                                 <ul class="main_nav_list">
-                                    <li class="main_nav_item active"><a href="#">Home</a></li>
-                                    <li class="main_nav_item"><a href="about.html">About us</a></li>
-                                    <li class="main_nav_item"><a href="offers.html">Offers</a></li>
-                                    <li class="main_nav_item"><a href="news.html">News</a></li>
-                                    <li class="main_nav_item"><a href="contact.html">Contact</a></li>
+                                    <li class="main_nav_item active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li class="main_nav_item">@Html.ActionLink("Offers", "Offers", "Home")</li>
+                                    <li class="main_nav_item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                    <li class="main_nav_item">@Html.ActionLink("About", "About", "Home")</li>
+                                    <li class="main_nav_item">@Html.ActionLink("Login", "Login", "Account")</li>
+                                    <li class="main_nav_item">@Html.ActionLink("Register", "Register", "Account")</li>
+
                                 </ul>
                             </nav>
 
@@ -536,8 +538,8 @@
                             <!-- Logo -->
                             <div class="logo_container">
                                 <div class="logo">
-                                    <div>destino</div>
-                                    <div>travel agency</div>
+                                    
+                                    <div>Flybook</div>
                                     <div class="logo_image"><img src="~/Content/HomePageCss/images/logo.png" alt=""></div>
                                 </div>
                             </div>
