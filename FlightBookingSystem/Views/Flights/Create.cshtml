@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+
 <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
 <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js"></script>
@@ -14,10 +14,14 @@
 
 <script>
     $(function () {
-        $("#datepicker").datetimepicker();
+        $("#datepicker").datetimepicker({
+          format: "MM/DD/YYYY hh:mm:ss a"
+        });
     });
     $(function () {
-        $("#datepicker1").datetimepicker();
+        $("#datepicker1").datetimepicker({
+            format: "MM/DD/YYYY hh:mm:ss a"
+        });
     });
 </script>
 @using (Html.BeginForm())
