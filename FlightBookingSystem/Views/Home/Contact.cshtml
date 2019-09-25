@@ -15,6 +15,12 @@
     <link href="~/Content/HomePageCss/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="~/Content/HomePageCss/styles/contact_styles.css">
     <link rel="stylesheet" type="text/css" href="~/Content/HomePageCss/styles/contact_responsive.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css' type='text/css' />
 </head>
 <body>
 
@@ -138,7 +144,7 @@
         <!-- Find Form -->
 
         <div class="find">
-           
+
             <div class="find_background_container prlx_parent">
                 <div class="find_background prlx" style="background-image:url(/Content/HomePageCss/images/find.jpg)"></div>
             </div>
@@ -241,7 +247,8 @@
                     <div class="col">
                         <div id="google_map">
                             <div class="map_container">
-                                <div id="map"></div>
+                                <div id='map'></div>
+
                             </div>
                         </div>
                     </div>
@@ -309,7 +316,7 @@
 
                                 <!-- Footer Latest Post -->
                                 <div class="footer_latest_item">
-                                    <div class="footer_latest_image"><img src="~/Content/HomePageCss/images/latest_1.jpg" ></div>
+                                    <div class="footer_latest_image"><img src="~/Content/HomePageCss/images/latest_1.jpg"></div>
                                     <div class="footer_latest_item_content">
                                         <div class="footer_latest_item_title"><a href="news.html">Brazil Summer</a></div>
                                         <div class="footer_latest_item_date">Jan 09, 2018</div>
@@ -362,7 +369,23 @@
     <script src="~/Content/HomePageCss/plugins/greensock/ScrollToPlugin.min.js"></script>
     <script src="~/Content/HomePageCss/plugins/easing/easing.js"></script>
     <script src="~/Content/HomePageCss/plugins/parallax-js-master/parallax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAWDodbWDP0gwQTVe0_1R3WSAn8fsq7lQQ"></script>
+
     <script src="~/Content/HomePageCss/js/contact_custom.js"></script>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiemhyMTk5NDEyMSIsImEiOiJjazB6NmozaGwwbHFzM2JyeGs5MHV4eW9iIn0.2kK8cbqWh3i87zRbRDIt4w';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-79.4512, 43.6568],
+            zoom: 13
+        });
+
+      
+        map.addControl(new MapboxDirections({
+            accessToken: mapboxgl.accessToken
+        }), 'top-left');
+    </script>
+
 </body>
 </html>
