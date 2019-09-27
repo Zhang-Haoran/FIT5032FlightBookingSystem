@@ -14,7 +14,7 @@ namespace FlightBookingSystem.Utils
         public void Send(String toEmail, String subject, String contents)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("noreply@localhost.com", "FIT5032 Example Email User");
+            var from = new EmailAddress("noreply@localhost.com", "Flybook-Haoran Zhang");
             var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";

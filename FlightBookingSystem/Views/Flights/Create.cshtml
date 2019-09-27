@@ -15,14 +15,23 @@
 <script>
     $(function () {
         $("#datepicker").datetimepicker({
-          format: "MM/DD/YYYY hh:mm:ss a"
+            format: "MM/DD/YYYY hh:mm:ss a",
+            minDate:new Date()
+  
         });
+         $("#datepicker1").datetimepicker({
+             format: "MM/DD/YYYY hh:mm:ss a",
+             minDate:new Date()
+         });
+
+       
+  
+
     });
-    $(function () {
-        $("#datepicker1").datetimepicker({
-            format: "MM/DD/YYYY hh:mm:ss a"
-        });
-    });
+
+
+    
+
 </script>
 @using (Html.BeginForm())
 {
