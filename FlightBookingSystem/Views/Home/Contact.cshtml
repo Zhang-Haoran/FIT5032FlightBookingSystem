@@ -50,8 +50,28 @@
                                     <li class="main_nav_item">@Html.ActionLink("Contact", "Contact", "Home")</li>
                                     <li class="main_nav_item">@Html.ActionLink("Flights", "Index", "Flights")</li>
                                     <li class="main_nav_item">@Html.ActionLink("Bookings", "Index", "Bookings")</li>
-                                    <li class="main_nav_item">@Html.ActionLink("Login", "Login", "Account")</li>
-                                    <li class="main_nav_item">@Html.ActionLink("Register", "Register", "Account")</li>
+                                    @using Microsoft.AspNet.Identity
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+
+                                            <li class="main_nav_item">
+                                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null,htmlAttributes: new { title = "Manage" })
+                                            </li>
+                                            <li class="main_nav_item"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        <li class="main_nav_item">@Html.ActionLink("Register", "Register", "Account",routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                        <li class="main_nav_item">@Html.ActionLink("Log in", "Login", "Account",routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+                                    }
                                 </ul>
                             </nav>
 
