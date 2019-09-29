@@ -106,19 +106,18 @@
             }))
             {
                 <input type="hidden" id="FlightId" , name="FlightId" value="@Html.Raw(ViewBag.FlightId)" />
-           
+
                 <textarea rows="3" placeholder="Your Comment" id="Comments" name="Comments" class="form-control"></textarea>
-                <input type="submit" value="submit" />
+                <input type="submit" value="submit" class="btn btn-primary" />
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-success" })
             }
 
         </div>
 
 
                     </div>
-                    <p>
-                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
-                        @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-success" })
-                    </p>
+                   
 
                 </div>
                 <script>
