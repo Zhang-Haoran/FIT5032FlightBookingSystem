@@ -20,6 +20,6 @@ namespace FlightBookingSystem.Models
         [Required(ErrorMessage = "Please enter the contents")]
         public string Contents { get; set; }
 
-        public HttpPostedFileBase Upload { get; set; }
+        public HttpPostedFileBase UploadFile { get; set; }
     }
 }
