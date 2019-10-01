@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
     Layout = null;
 }
-
+@using Microsoft.AspNet.Identity
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@
                             <!-- Logo -->
                             <div class="logo_container">
                                 <div class="logo">
-                                    
+
                                     <div>FlyBook</div>
                                     <div class="logo_image"><img src="~/Content/HomePageCss/images/logo.png" alt=""></div>
                                 </div>
@@ -50,16 +50,16 @@
                                     <li class="main_nav_item">@Html.ActionLink("Contact", "Contact", "Home")</li>
                                     <li class="main_nav_item">@Html.ActionLink("Flights", "Index", "Flights")</li>
                                     <li class="main_nav_item">@Html.ActionLink("Bookings", "Index", "Bookings")</li>
-                                    @using Microsoft.AspNet.Identity
+
                                     @if (Request.IsAuthenticated)
                                     {
-                                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "main_nav_item" }))
                                         {
                                             @Html.AntiForgeryToken()
-
-
                                             <li class="main_nav_item">
-                                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null,htmlAttributes: new { title = "Manage" })
+
+
+                                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                             </li>
                                             <li class="main_nav_item"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 
@@ -68,8 +68,8 @@
                                     else
                                     {
 
-                                        <li class="main_nav_item">@Html.ActionLink("Register", "Register", "Account", routeValues: null,htmlAttributes: new { id = "registerLink" })</li>
-                                        <li class="main_nav_item">@Html.ActionLink("Log in", "Login", "Account",routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                                        <li class="main_nav_item">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                        <li class="main_nav_item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 
                                     }
 
@@ -153,7 +153,7 @@
         <!-- Find Form -->
 
         <div class="find">
-        
+
             <div class="find_background parallax-window" data-parallax="scroll" data-image-src="/Content/HomePageCss/images/find.jpg" data-speed="0.8"></div>
             <div class="container">
                 <div class="row">
@@ -232,7 +232,7 @@
                         <!-- Top Destination Item -->
                         <div class="top_item">
                             <a href="#">
-                                <div class="top_item_image"><img src="~/Content/HomePageCss/images/top_2.jpg" ></div>
+                                <div class="top_item_image"><img src="~/Content/HomePageCss/images/top_2.jpg"></div>
                                 <div class="top_item_content">
                                     <div class="top_item_price">From $890</div>
                                     <div class="top_item_text">Italian Riviera</div>
@@ -246,7 +246,7 @@
                         <!-- Top Destination Item -->
                         <div class="top_item">
                             <a href="#">
-                                <div class="top_item_image"><img src="~/Content/HomePageCss/images/top_3.jpg" ></div>
+                                <div class="top_item_image"><img src="~/Content/HomePageCss/images/top_3.jpg"></div>
                                 <div class="top_item_content">
                                     <div class="top_item_price">From $890</div>
                                     <div class="top_item_text">Cinque Terre</div>
@@ -260,7 +260,7 @@
                         <!-- Top Destination Item -->
                         <div class="top_item">
                             <a href="#">
-                                <div class="top_item_image"><img src="~/Content/HomePageCss/images/top_4.jpg" ></div>
+                                <div class="top_item_image"><img src="~/Content/HomePageCss/images/top_4.jpg"></div>
                                 <div class="top_item_content">
                                     <div class="top_item_price">From $890</div>
                                     <div class="top_item_text">Santorini, Greece</div>
@@ -276,7 +276,7 @@
         <!-- Last -->
 
         <div class="last">
-      
+
             <div class="last_background parallax-window" data-parallax="scroll" data-image-src="/Content/HomePageCss/images/last.jpg" data-speed="0.8"></div>
 
             <div class="container">
@@ -311,7 +311,7 @@
         <!-- Video -->
 
         <div class="video_section d-flex flex-column align-items-center justify-content-center">
-         
+
             <div class="video_background parallax-window" data-parallax="scroll" data-image-src="/Content/HomePageCss/images/video.jpg" data-speed="0.8"></div>
             <div class="video_content">
                 <div class="video_title">A day on the island</div>
@@ -357,7 +357,7 @@
                             <!-- Popular Item -->
                             <div class="popular_item">
                                 <a href="offers.html">
-                                    <img src="~/Content/HomePageCss/images/popular_2.jpg" >
+                                    <img src="~/Content/HomePageCss/images/popular_2.jpg">
                                     <div class="popular_item_content">
                                         <div class="popular_item_price">From $890</div>
                                         <div class="popular_item_title">Hawai</div>
@@ -368,7 +368,7 @@
                             <!-- Popular Item -->
                             <div class="popular_item">
                                 <a href="offers.html">
-                                    <img src="~/Content/HomePageCss/images/popular_3.jpg" >
+                                    <img src="~/Content/HomePageCss/images/popular_3.jpg">
                                     <div class="popular_item_content">
                                         <div class="popular_item_price">From $890</div>
                                         <div class="popular_item_title">Ireland</div>
@@ -379,7 +379,7 @@
                             <!-- Popular Item -->
                             <div class="popular_item">
                                 <a href="offers.html">
-                                    <img src="~/Content/HomePageCss/images/popular_4.jpg" >
+                                    <img src="~/Content/HomePageCss/images/popular_4.jpg">
                                     <div class="popular_item_content">
                                         <div class="popular_item_price">From $890</div>
                                         <div class="popular_item_title">Thailand</div>
@@ -390,7 +390,7 @@
                             <!-- Popular Item -->
                             <div class="popular_item">
                                 <a href="offers.html">
-                                    <img src="~/Content/HomePageCss/images/popular_5.jpg" >
+                                    <img src="~/Content/HomePageCss/images/popular_5.jpg">
                                     <div class="popular_item_content">
                                         <div class="popular_item_price">From $890</div>
                                         <div class="popular_item_title">Croatia</div>
@@ -401,7 +401,7 @@
                             <!-- Popular Item -->
                             <div class="popular_item">
                                 <a href="offers.html">
-                                    <img src="~/Content/HomePageCss/images/popular_6.jpg" >
+                                    <img src="~/Content/HomePageCss/images/popular_6.jpg">
                                     <div class="popular_item_content">
                                         <div class="popular_item_price">From $890</div>
                                         <div class="popular_item_title">Bali</div>
@@ -412,7 +412,7 @@
                             <!-- Popular Item -->
                             <div class="popular_item">
                                 <a href="offers.html">
-                                    <img src="~/Content/HomePageCss/images/popular_7.jpg" >
+                                    <img src="~/Content/HomePageCss/images/popular_7.jpg">
                                     <div class="popular_item_content">
                                         <div class="popular_item_price">From $890</div>
                                         <div class="popular_item_title">France</div>
@@ -457,7 +457,7 @@
                         <!-- Special Offers Item -->
                         <div class="owl-item">
                             <div class="special_item">
-                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_1.jpg" ></div>
+                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_1.jpg"></div>
                                 <div class="special_item_content text-center">
                                     <div class="special_category">Visiting</div>
                                     <div class="special_title"><a href="offers.html">Indonesia</a></div>
@@ -468,7 +468,7 @@
                         <!-- Special Offers Item -->
                         <div class="owl-item">
                             <div class="special_item d-flex flex-column align-items-center justify-content-center">
-                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_2.jpg" ></div>
+                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_2.jpg"></div>
                                 <div class="special_item_content text-center">
                                     <div class="special_category">Culture</div>
                                     <div class="special_title"><a href="offers.html">India</a></div>
@@ -479,7 +479,7 @@
                         <!-- Special Offers Item -->
                         <div class="owl-item">
                             <div class="special_item d-flex flex-column align-items-center justify-content-center">
-                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_3.jpg" ></div>
+                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_3.jpg"></div>
                                 <div class="special_item_content text-center">
                                     <div class="special_category">Sunbathing</div>
                                     <div class="special_title"><a href="offers.html">Thailand</a></div>
@@ -490,7 +490,7 @@
                         <!-- Special Offers Item -->
                         <div class="owl-item">
                             <div class="special_item d-flex flex-column align-items-center justify-content-center">
-                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_4.jpg" ></div>
+                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_4.jpg"></div>
                                 <div class="special_item_content text-center">
                                     <div class="special_category">Visiting</div>
                                     <div class="special_title"><a href="offers.html">Bali</a></div>
@@ -501,7 +501,7 @@
                         <!-- Special Offers Item -->
                         <div class="owl-item">
                             <div class="special_item d-flex flex-column align-items-center justify-content-center">
-                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_5.jpg" ></div>
+                                <div class="special_item_background"><img src="~/Content/HomePageCss/images/special_5.jpg"></div>
                                 <div class="special_item_content text-center">
                                     <div class="special_category">Visiting</div>
                                     <div class="special_title"><a href="offers.html">France</a></div>
@@ -521,7 +521,7 @@
         <!-- Newsletter -->
 
         <div class="newsletter">
-          
+
             <div class="newsletter_background" style="background-image:url(/Content/HomePageCss/images/newsletter.jpg)"></div>
             <div class="container">
                 <div class="row">
@@ -554,7 +554,7 @@
                             <!-- Logo -->
                             <div class="logo_container">
                                 <div class="logo">
-                                    
+
                                     <div>Flybook</div>
                                     <div class="logo_image"><img src="~/Content/HomePageCss/images/logo.png" alt=""></div>
                                 </div>
@@ -586,7 +586,7 @@
 
                                 <!-- Footer Latest Post -->
                                 <div class="footer_latest_item">
-                                    <div class="footer_latest_image"><img src="~/Content/HomePageCss/images/latest_2.jpg" ></div>
+                                    <div class="footer_latest_image"><img src="~/Content/HomePageCss/images/latest_2.jpg"></div>
                                     <div class="footer_latest_item_content">
                                         <div class="footer_latest_item_title"><a href="news.html">A perfect vacation</a></div>
                                         <div class="footer_latest_item_date">Jan 09, 2018</div>
