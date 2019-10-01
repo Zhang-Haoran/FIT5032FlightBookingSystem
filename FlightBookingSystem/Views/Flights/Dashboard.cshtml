@@ -8,8 +8,8 @@
 
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
 <h2>Dashboard</h2>
 
 <p>
@@ -107,14 +107,19 @@
     })
 </script>
 <script>
-    Morris.Bar({
-        element: 'chart',
-        data: [
-            { y: document.getElementById("a").textContent, a: document.getElementById("b").textContent},
-        
-        ],
-        xkey: 'y',
-        ykeys: ['a'],
-        labels: ['Series A']
+    $.get("@Url.Action("Diagram")", function (result) {
+        new Morris.Bar({
+            element: 'chart',
+            data: result,
+            xkey: 'data',
+            ykeys: ['value'],
+            labels: ['Series A']
+        })
     });
+
+
+
+
+
+   
 </script>

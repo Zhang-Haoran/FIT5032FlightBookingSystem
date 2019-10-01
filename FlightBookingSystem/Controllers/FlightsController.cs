@@ -169,5 +169,16 @@ namespace FlightBookingSystem.Controllers
 
             return View(db.Flights.ToList());
         }
+
+        public ActionResult Diagram()
+        {
+            var mc = from u in db.Flights
+                     select new
+                     {
+                         data = u.flightNumber,
+                         value = u.totalSeats
+                     };
+            return Json(mc, JsonRequestBehavior.AllowGet);
+        }
     }
 }
