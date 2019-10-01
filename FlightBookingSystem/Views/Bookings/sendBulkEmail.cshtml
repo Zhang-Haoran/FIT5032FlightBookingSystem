@@ -1,0 +1,50 @@
+﻿@model FlightBookingSystem.Models.Bookings
+
+@{
+    ViewBag.Title = "Email";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>send Bulk Email</h2>
+
+<body>
+    @using (Html.BeginForm("sendBulkEmail", "Bookings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>Subject:</td>
+                <td><input type="text" name="Subject" id="Subject" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td valign="top">Body:</td>
+                <td><input type="text" name="Contents" id="Contents" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>File Attachment:</td>
+                <td><input type="file" name="Attachments" multiple="multiple" /></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Send" /></td>
+            </tr>
+        </table>
+    }
+
+</body>

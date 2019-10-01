@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using FlightBookingSystem.Models;
@@ -131,6 +133,52 @@ namespace FlightBookingSystem.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult sendBulkEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult sendBulkEmail(String Subject, String Contents ,List<HttpPostedFileBase> attachments)
+        {
+            string from = "haoranbackup4@gmail.com";
+ 
+            var to = (from u in db.Bookings
+                      select u.email).ToArray();
+            foreach(var item in to)
+            {
+                using (MailMessage mm = new MailMessage(from, item))
+                {
+                    mm.Subject = Subject;
+                    mm.Body = Contents;
+                    foreach (HttpPostedFileBase attachment in attachments)
+                    {
+                        if (attachment != null)
+                        {
+                            string fileName = Path.GetFileName(attachment.FileName);
+                            mm.Attachments.Add(new Attachment(attachment.InputStream, fileName));
+                        }
+                    }
+                    mm.IsBodyHtml = false;
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.EnableSsl = true;
+                    NetworkCredential NetworkCred = new NetworkCredential(from, "zhr1994121");
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = NetworkCred;
+                    smtp.Port = 587;
+                    smtp.Send(mm);
+                    ViewBag.Message = "Email sent.";
+                }
+            }
+
+
+
+            
+
+            return View();
         }
     }
 }

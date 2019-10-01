@@ -78,6 +78,7 @@ namespace FlightBookingSystem.Controllers
         public ActionResult Email(SendEmailViewModel model, List<HttpPostedFileBase> attachments)
         {
             string from = "haoranbackup4@gmail.com"; 
+
             using (MailMessage mm = new MailMessage(from, model.ToEmail))
             {
                 mm.Subject = model.Subject;

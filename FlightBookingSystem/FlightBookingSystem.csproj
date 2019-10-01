@@ -887,6 +887,7 @@
     <Content Include="Views\Home\Offers.cshtml" />
     <Content Include="Views\Home\Send_Email.cshtml" />
     <Content Include="Views\Home\Email.cshtml" />
+    <Content Include="Views\Bookings\sendBulkEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
