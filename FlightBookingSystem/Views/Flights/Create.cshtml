@@ -15,18 +15,14 @@
 <script>
     $(function () {
         $("#datepicker").datetimepicker({
-            format: "MM/DD/YYYY hh:mm:ss a",
+            format: "DD/MM/YYYY hh:mm:ss a",
             minDate:new Date()
   
         });
          $("#datepicker1").datetimepicker({
-             format: "MM/DD/YYYY hh:mm:ss a",
+             format: "DD/MM/YYYY hh:mm:ss a",
              minDate:new Date()
          });
-
-       
-  
-
     });
 
 
@@ -107,6 +103,4 @@
     @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-success" })
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
