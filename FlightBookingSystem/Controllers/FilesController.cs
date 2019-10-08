@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,12 +49,25 @@ namespace FlightBookingSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,path,name,BookingsId")] Files files)
+        public ActionResult Create([Bind(Include = "Id,BookingsId")] Files files,HttpPostedFileBase file)
         {
+   
             if (ModelState.IsValid)
             {
-                db.Files.Add(files);
-                db.SaveChanges();
+               
+                    if (file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/fileUploads"), fileName);
+                    files.path = path;
+                    files.name = fileName;
+                    file.SaveAs(path);
+                    db.Files.Add(files);
+                    db.SaveChanges();
+                    ViewBag.Message = "Upload Successful";
+                }
+                
+               
                 return RedirectToAction("Index");
             }
 
