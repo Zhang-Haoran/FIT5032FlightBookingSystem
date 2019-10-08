@@ -48,6 +48,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/ckeditor")
 
 
     <!-- jQuery -->
@@ -226,12 +227,14 @@
 
 
                         <div class="container body-content">
-                            @RenderBody()
-                            <hr />
-                            <footer>
-                                <p>&copy; @DateTime.Now.Year - Flybook</p>
-                            </footer>
-                        </div>
+                            <div class="panel panel-default">
+                                @RenderBody()
+                                </div>
+                                <hr />
+                                <footer>
+                                    <p>&copy; @DateTime.Now.Year - Flybook</p>
+                                </footer>
+                            </div>
 
 
 

@@ -4,14 +4,15 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="/Scripts/ckeditor/ckeditor.js"></script>
+<script src="/Scripts/ckeditor/adapters/jquery.js"></script>
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Comments</h4>
         <hr />
@@ -19,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.content, new { @id = "content" })
                 @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,6 +52,15 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script>
+
+    CKEDITOR.replace("content",
+                        {
+                            toolbar : 'Basic', /* this does the magic */
+                            uiColor : '#9AB8F3'
+                        });
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
