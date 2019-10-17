@@ -1,4 +1,5 @@
-﻿/* Copyright 2019, "All Rights Reserved" Haoran Zhang*/using System;
+﻿/* Copyright 2019, "All Rights Reserved" Haoran Zhang*/
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;

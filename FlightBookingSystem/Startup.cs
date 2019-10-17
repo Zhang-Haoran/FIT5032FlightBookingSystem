@@ -1,4 +1,4 @@
-﻿using Microsoft.Owin;
+﻿/* Copyright 2019, "All Rights Reserved" Haoran Zhang*/using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(FlightBookingSystem.Startup))]

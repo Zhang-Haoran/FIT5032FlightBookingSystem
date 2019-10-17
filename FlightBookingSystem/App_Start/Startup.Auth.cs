@@ -1,4 +1,4 @@
-﻿using System;
+﻿/* Copyright 2019, "All Rights Reserved" Haoran Zhang*/using System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
