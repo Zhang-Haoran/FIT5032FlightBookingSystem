@@ -11,7 +11,6 @@ namespace FlightBookingSystem.Utils
     {
         // Please use your API KEY here.
         private const String API_KEY = "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";
-
         public void Send(String toEmail, String subject, String contents)
         {
             var client = new SendGridClient(API_KEY);

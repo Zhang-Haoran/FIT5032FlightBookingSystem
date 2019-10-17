@@ -12,6 +12,7 @@ namespace FlightBookingSystem.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Flights
     {
@@ -23,13 +24,16 @@ namespace FlightBookingSystem.Models
         }
     
         public int Id { get; set; }
+        [RegularExpression(@"^[A-Z a-z]+$", ErrorMessage = "Please enter a departure,Numbers are not allowed")]
         public string departure { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<DateTime> departureDate { get; set; }
+        [RegularExpression(@"^[A-Z a-z]+$", ErrorMessage = "Please enter a destiantion,Numbers are not allowed")]
         public string destination { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<DateTime> arrivalDate { get; set; }
         public string flightNumber { get; set; }
+        [Column(TypeName = "numeric")]
         public Nullable<int> totalSeats { get; set; }
         
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

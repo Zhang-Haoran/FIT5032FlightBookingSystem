@@ -11,7 +11,9 @@ namespace FlightBookingSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Bookings
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +23,16 @@ namespace FlightBookingSystem.Models
         }
     
         public int Id { get; set; }
+        [RegularExpression(@"^[A-Z a-z]+$", ErrorMessage = "Numbers are not allowed")]
         public string name { get; set; }
         public string email { get; set; }
+        [Column(TypeName = "numeric")]
         public Nullable<int> seats { get; set; }
+        [RegularExpression(@"^[A-Z a-z]+$", ErrorMessage = "Numbers are not allowed")]
         public string status { get; set; }
+        [Column(TypeName = "numeric")]
         public Nullable<int> price { get; set; }
+        [Column(TypeName = "numeric")]
         public Nullable<int> rating { get; set; }
         public int FlightsId { get; set; }
     
