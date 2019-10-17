@@ -1,4 +1,4 @@
-﻿@model FlightBookingSystem.Models.Flights
+﻿@*Copyright 2019, "All Rights Reserved" Haoran Zhang*@@model FlightBookingSystem.Models.Flights
 
 @{
     ViewBag.Title = "Details";
@@ -89,7 +89,7 @@
 
                             @foreach (var content in ViewBag.Content)
                             {
-                                <text><br/></text>
+                                <text><br /></text>
                                 @Html.Raw(content);
                             }
 
@@ -116,11 +116,11 @@
         </div>
 
 
-                    </div>
-                   
+    </div>
 
-                </div>
-                <script>
+
+</div>
+<script>
                     function myFunction() {
                         geocoder = new google.maps.Geocoder();
                         var latlng = new google.maps.LatLng("-34.397", "150.644");
@@ -225,8 +225,8 @@
 
 
 
-                </script>
+</script>
 
 
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWDodbWDP0gwQTVe0_1R3WSAn8fsq7lQQ&callback=myFunction"
-                        type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWDodbWDP0gwQTVe0_1R3WSAn8fsq7lQQ&callback=myFunction"
+        type="text/javascript"></script>

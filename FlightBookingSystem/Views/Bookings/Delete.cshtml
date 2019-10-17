@@ -1,4 +1,4 @@
-﻿@model FlightBookingSystem.Models.Bookings
+﻿@*Copyright 2019, "All Rights Reserved" Haoran Zhang*@@model FlightBookingSystem.Models.Bookings
 
 @{
     ViewBag.Title = "Delete";
@@ -73,7 +73,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> 
+            <input type="submit" value="Delete" class="btn btn-danger" />
             @Html.ActionLink("Back to List", "Index","",new { @class = "btn btn-success"})
         </div>
     }

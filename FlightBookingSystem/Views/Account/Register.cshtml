@@ -1,4 +1,4 @@
-﻿@model FlightBookingSystem.Models.RegisterViewModel
+﻿@*Copyright 2019, "All Rights Reserved" Haoran Zhang*@@model FlightBookingSystem.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -21,13 +21,13 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" ,@placeholder ="example@example.com"})
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "example@example.com" })
                 </div>
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
                 <div class="col-md-10">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control",@placeholder ="please enter the password"})
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "please enter the password" })
                 </div>
             </div>
             <div class="form-group">

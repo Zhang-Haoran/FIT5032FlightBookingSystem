@@ -342,7 +342,7 @@ namespace FlightBookingSystem.Controllers
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
-
+    
         //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]

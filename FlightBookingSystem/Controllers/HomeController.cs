@@ -1,4 +1,4 @@
-﻿using FlightBookingSystem.Models;
+﻿/* Copyright 2019, "All Rights Reserved" Haoran Zhang*/using FlightBookingSystem.Models;
 using FlightBookingSystem.Utils;
 using System;
 using System.Collections.Generic;

@@ -49,7 +49,7 @@
 
 
                                             <li class="main_nav_item">
-                                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage",routeValues: null, htmlAttributes: new { title = "Manage" })
+                                                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
                                             </li>
                                             <li class="main_nav_item"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
 
@@ -58,8 +58,8 @@
                                     else
                                     {
 
-                                        <li class="main_nav_item">@Html.ActionLink("Register", "Register", "Account",routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                                        <li class="main_nav_item">@Html.ActionLink("Log in", "Login", "Account",routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                                        <li class="main_nav_item">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                        <li class="main_nav_item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 
                                     }
                                 </ul>
@@ -224,7 +224,7 @@
                     </div>
                     <div class="col-lg-6 about_col order-lg-2 order-1">
                         <div class="about_image">
-                            <img src="~/Content/HomePageCss/images/about.jpg" >
+                            <img src="~/Content/HomePageCss/images/about.jpg">
                         </div>
                     </div>
                 </div>
@@ -400,7 +400,7 @@
 
                                 <!-- Footer Latest Post -->
                                 <div class="footer_latest_item">
-                                    <div class="footer_latest_image"><img src="~/Content/HomePageCss/images/latest_1.jpg" ></div>
+                                    <div class="footer_latest_image"><img src="~/Content/HomePageCss/images/latest_1.jpg"></div>
                                     <div class="footer_latest_item_content">
                                         <div class="footer_latest_item_title"><a href="news.html">Brazil Summer</a></div>
                                         <div class="footer_latest_item_date">Jan 09, 2018</div>
@@ -409,7 +409,7 @@
 
                                 <!-- Footer Latest Post -->
                                 <div class="footer_latest_item">
-                                    <div class="footer_latest_image"><img src="~/Content/HomePageCss/images/latest_2.jpg" ></div>
+                                    <div class="footer_latest_image"><img src="~/Content/HomePageCss/images/latest_2.jpg"></div>
                                     <div class="footer_latest_item_content">
                                         <div class="footer_latest_item_title"><a href="news.html">A perfect vacation</a></div>
                                         <div class="footer_latest_item_date">Jan 09, 2018</div>
@@ -456,3 +456,4 @@
     <script src="~/Content/HomePageCss/js/about_custom.js"></script>
 </body>
 </html>
+@*Copyright 2019, "All Rights Reserved" Haoran Zhang*@

@@ -6,7 +6,7 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+/* Copyright 2019, "All Rights Reserved" Haoran Zhang*/
 namespace FlightBookingSystem.Models
 {
     using System;

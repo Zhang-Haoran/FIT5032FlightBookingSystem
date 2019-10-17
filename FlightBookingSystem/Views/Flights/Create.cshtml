@@ -1,4 +1,4 @@
-﻿@model FlightBookingSystem.Models.Flights
+﻿@*Copyright 2019, "All Rights Reserved" Haoran Zhang*@@model FlightBookingSystem.Models.Flights
 
 @{
     ViewBag.Title = "Create";
@@ -16,17 +16,17 @@
     $(function () {
         $("#datepicker").datetimepicker({
             format: "DD/MM/YYYY hh:mm:ss a",
-            minDate:new Date()
-  
+            minDate: new Date()
+
         });
-         $("#datepicker1").datetimepicker({
-             format: "DD/MM/YYYY hh:mm:ss a",
-             minDate:new Date()
-         });
+        $("#datepicker1").datetimepicker({
+            format: "DD/MM/YYYY hh:mm:ss a",
+            minDate: new Date()
+        });
     });
 
 
-    
+
 
 </script>
 @using (Html.BeginForm())
