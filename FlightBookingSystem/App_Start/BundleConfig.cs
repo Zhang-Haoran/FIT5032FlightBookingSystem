@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿/* Copyright 2019, "All Rights Reserved" Haoran Zhang*/using System.Web;
 using System.Web.Optimization;
 
 namespace FlightBookingSystem

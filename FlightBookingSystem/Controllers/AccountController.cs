@@ -1,4 +1,4 @@
-﻿using System;
+﻿/* Copyright 2019, "All Rights Reserved" Haoran Zhang*/using System;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
